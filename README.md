@@ -1,7 +1,7 @@
 # 🚀 GX.AI Context Engine 
 
 **Team:** Let Me Solo It 
-**Members:** Muhammad Ikhwan
+**Members:** Muhammad Ikhwan\n
 **Institution:** UiTM
 **Event:** UTMxHackathon '26  
 **Category:** Finance & Fintech  
@@ -16,9 +16,9 @@ Traditional banking applications act as a rearview mirror—they only show users
 
 ## ✨ Key Features
 * 🧠 **Context-Aware AI:** Integrates with Anthropic's Claude AI to analyze user spending patterns and issue dynamic, personalized behavioral nudges.
-* 🚨 **Vector 01 (Velocity Nudges):** Detects high weekend spending and automatically diverts micro-funds to Emergency Pockets to protect savings streaks.
-* 🔍 **Vector 02 (Subscription Audits):** Identifies dormant accounts and initiates cancellation protocols, re-routing wasted funds to high-yield investments.
-* ⚡ **Vector 03 (Auto-Routing):** Processes salary inflows instantly using the 50/30/20 rule without requiring user friction or manual transfers.
+* 🚨 **Function 01 (Velocity Nudges):** Detects high weekend spending and automatically diverts micro-funds to Emergency Pockets to protect savings streaks.
+* 🔍 **Function 02 (Subscription Audits):** Identifies dormant accounts and initiates cancellation protocols, re-routing wasted funds to high-yield investments.
+* ⚡ **Function 03 (Auto-Routing):** Processes salary inflows instantly using the 50/30/20 rule without requiring user friction or manual transfers.
 * 🎨 **Premium Fintech UI:** Features a custom dark-mode glassmorphism dashboard built to replicate native desktop banking experiences.
 
 ## 🛠️ Tech Stack
