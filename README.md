@@ -1,7 +1,7 @@
 # 🚀 GX.AI Context Engine 
 
 **Team:** Let Me Solo It 
-**Members:** Muhammad Ikhwan\n
+**Members:** Muhammad Ikhwan
 **Institution:** UiTM
 **Event:** UTMxHackathon '26  
 **Category:** Finance & Fintech  
