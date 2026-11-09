@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "gxbank", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "ai-agency", "run", "start"], "port": 3000 }
+  ]
+}
