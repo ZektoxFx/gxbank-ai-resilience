@@ -41,7 +41,7 @@ export default function Transfer() {
       <h1 className="text-xl font-semibold">Transfer</h1>
       <p className="mt-1 text-sm text-muted">Send money instantly to any bank account in Malaysia.</p>
 
-      <div className="mt-6 grid items-start gap-4 md:grid-cols-[3fr_2fr]">
+      <div className="mt-6 grid gap-4 md:grid-cols-[3fr_2fr]">
         <section aria-labelledby="details" className="card" aria-live="polite">
           <h2 id="details" className="font-semibold">Transfer details</h2>
           {done ? (
@@ -81,7 +81,7 @@ export default function Transfer() {
                   className={`num ${field}`}
                 />
                 <span id="amount-hint" className={`num mt-1 block font-normal ${errors.amount ? 'text-pink' : 'text-muted'}`}>
-                  {errors.amount ?? `Available ${rm(available)} · ${rm(limitLeft)} left of today's limit`}
+                  {errors.amount ?? 'Up to 2 decimal places.'}
                 </span>
               </label>
               <label className="block text-sm font-medium">
@@ -93,7 +93,7 @@ export default function Transfer() {
           )}
         </section>
 
-        <section aria-labelledby="recent" className="card">
+        <section aria-labelledby="recent" className="card flex flex-col">
           <h2 id="recent" className="font-semibold">Recent recipients</h2>
           <ul className="mt-3 grid gap-1">
             {recipients.map((r) => (
@@ -113,6 +113,10 @@ export default function Transfer() {
               </li>
             ))}
           </ul>
+          <dl aria-live="polite" className="num mt-4 grid gap-2 md:mt-auto border-t border-line pt-4 text-sm">
+            <div className="flex justify-between"><dt className="text-muted">Available</dt><dd>{rm(available)}</dd></div>
+            <div className="flex justify-between"><dt className="text-muted">Daily limit left</dt><dd>{rm(limitLeft)}</dd></div>
+          </dl>
         </section>
       </div>
     </>

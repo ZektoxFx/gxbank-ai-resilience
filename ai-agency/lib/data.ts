@@ -76,6 +76,7 @@ export const recipients = [
   { name: 'Ali Hassan', bank: 'Maybank', account: '114022334455' },
   { name: 'Siti Rahim', bank: 'CIMB', account: '800712345678' },
   { name: 'Farid Mohd', bank: 'GXBank', account: '880099887766' },
+  { name: 'Ahmad Zaki', bank: 'RHB', account: '212345678901' },
 ];
 
 export const startingPoints = 2450;
