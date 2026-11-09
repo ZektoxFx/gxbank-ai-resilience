@@ -24,7 +24,7 @@ Traditional banking applications act as a rearview mirror—they only show users
 ## 🛠️ Tech Stack
 * **Framework:** Next.js 16 (App Router, React 19)
 * **Styling:** Tailwind CSS 4
-* **AI Integration:** Claude Haiku 5.5 via the Anthropic TypeScript SDK (`app/api/nudge/route.ts`)
+* **AI Integration:** Claude Haiku 5.5 via the Anthropic TypeScript SDK (`app/api/nudge/[scenario]/route.ts`). Answers are cached for an hour, so Claude is called at most once per check per hour.
 * **Icons:** lucide-react
 
 All account figures are sample data in `ai-agency/lib/data.ts`. Transfers and voucher claims are simulated in the browser.

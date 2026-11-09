@@ -21,11 +21,7 @@ export default function Home() {
     setBusy(key);
     setError('');
     try {
-      const res = await fetch('/api/nudge', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ scenario: key }),
-      });
+      const res = await fetch(`/api/nudge/${key}`);
       if (!res.ok) throw new Error(String(res.status));
       const { text, source } = await res.json();
       setNudges((n) => [{ id: Date.now(), key, text, source }, ...n]);
