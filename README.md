@@ -19,20 +19,34 @@ Traditional banking applications act as a rearview mirror—they only show users
 * 🚨 **Function 01 (Velocity Nudges):** Detects high weekend spending and automatically diverts micro-funds to Emergency Pockets to protect savings streaks.
 * 🔍 **Function 02 (Subscription Audits):** Identifies dormant accounts and initiates cancellation protocols, re-routing wasted funds to high-yield investments.
 * ⚡ **Function 03 (Auto-Routing):** Processes salary inflows instantly using the 50/30/20 rule without requiring user friction or manual transfers.
-* 🎨 **Premium Fintech UI:** Features a custom dark-mode glassmorphism dashboard built to replicate native desktop banking experiences.
+* 🎨 **GXBank UI:** A night-mode banking app in the GXBank palette with Home, Pockets, Transfer and Rewards screens that work on desktop and phone.
 
 ## 🛠️ Tech Stack
-* **Framework:** Next.js (React)
-* **Styling:** Tailwind CSS
-* **Animations:** Framer Motion
-* **AI Integration:** Anthropic Claude AI (Claude 3.5 Sonnet) via API
-* **Icons:** Custom SVG Paths
+* **Framework:** Next.js 16 (App Router, React 19)
+* **Styling:** Tailwind CSS 4
+* **AI Integration:** Claude Haiku 5.5 via the Anthropic TypeScript SDK (`app/api/nudge/route.ts`)
+* **Icons:** lucide-react
+
+All account figures are sample data in `ai-agency/lib/data.ts`. Transfers and voucher claims are simulated in the browser.
 
 ## 🚀 Getting Started (Local Development)
 
-If you would like to run the GX.AI simulation locally, follow these steps:
-
-**1. Clone the repository**
 ```bash
-git clone [https://github.com/ZektoxFx/gxbank-ai-resilience.git](https://github.com/ZektoxFx/gxbank-ai-resilience.git)
-cd gxbank-ai-resilience
+git clone https://github.com/ZektoxFx/gxbank-ai-resilience.git
+cd gxbank-ai-resilience/ai-agency
+npm install
+```
+
+Put your Anthropic API key in `ai-agency/.env.local`. It is git-ignored:
+
+```bash
+ANTHROPIC_API_KEY=your-key-here
+```
+
+Then run the app at http://localhost:3000:
+
+```bash
+npm run dev
+```
+
+Without a key, GX.AI still answers, using built-in offline answers labelled "Offline answer".

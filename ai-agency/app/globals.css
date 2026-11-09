@@ -1,39 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-.terminal {
-  font-family: 'Fira Code', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.stroke-text {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  animation: marquee 20s linear infinite;
+/* GXBank palette on a night ground: violet for the one action, lilac for data, pink for what needs attention. */
+@theme {
+  --color-ground: #0d0621;
+  --color-surface: #170e33;
+  --color-raised: #231849;
+  --color-line: #2c2154;
+  --color-ink: #ffffff;
+  --color-muted: #bdb3dc;
+  --color-faint: #9d92c4;
+  --color-brand: #7b2fff;
+  --color-brand-hover: #6a1fee;
+  --color-data: #a78bfa; /* taste-skill-ignore: GXBank brand lilac, kept by request */
+  --color-pink: #f7577f;
+  --color-positive: #34d399;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-/* Custom Scrollbar for the Terminal */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
 }
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 10px;
+
+.num {
+  font-variant-numeric: tabular-nums;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.5); /* Electric Blue on hover */
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-surface p-5;
+  }
+  .btn {
+    @apply h-9 items-center justify-center rounded-full bg-brand px-4 text-sm font-medium text-white transition hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-data active:scale-[.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
 }
