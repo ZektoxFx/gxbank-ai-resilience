@@ -1,10 +1,12 @@
-# 🚀 GX.AI Context Engine 
+# 🚀 GX.AI Context Engine
 
-**Team:** Let Me Solo It 
+**Live demo:** https://gxbank-ai-resilience.vercel.app
+
+**Team:** Let Me Solo It
 **Members:** Muhammad Ikhwan
 **Institution:** UiTM
-**Event:** UTMxHackathon '26  
-**Category:** Finance & Fintech  
+**Event:** UTMxHackathon '26
+**Category:** Finance & Fintech
 
 ---
 
@@ -12,22 +14,45 @@
 Traditional banking applications act as a rearview mirror—they only show users the money they have *already* lost. For Malaysian youth struggling to build financial resilience, passive tracking is not enough. To build sustainable wealth, banking needs to be active, predictive, and contextual.
 
 ## 🎯 Our Solution
-**GX.AI Context Engine** is an autonomous financial resilience dashboard designed as a seamless integration for the GXBank ecosystem. Instead of passive tracking, it uses LLM-powered context analysis to monitor spending velocity in real-time and intervene *before* financial stress occurs.
+**GX.AI Context Engine** is a financial resilience companion designed for the GXBank ecosystem. Instead of passive tracking, it reads the customer's spending context and suggests one concrete move, in ringgit, *before* financial stress builds up.
 
-## ✨ Key Features
-* 🧠 **Context-Aware AI:** Integrates with Anthropic's Claude AI to analyze user spending patterns and issue dynamic, personalized behavioral nudges.
-* 🚨 **Function 01 (Velocity Nudges):** Detects high weekend spending and automatically diverts micro-funds to Emergency Pockets to protect savings streaks.
-* 🔍 **Function 02 (Subscription Audits):** Identifies dormant accounts and initiates cancellation protocols, re-routing wasted funds to high-yield investments.
-* ⚡ **Function 03 (Auto-Routing):** Processes salary inflows instantly using the 50/30/20 rule without requiring user friction or manual transfers.
-* 🎨 **GXBank UI:** A night-mode banking app in the GXBank palette with Home, Pockets, Transfer and Rewards screens that work on desktop and phone.
+## ✨ Features
+* 🧠 **GX.AI resilience engine:** Three checks on the Home screen, each answered by Claude with one specific action:
+  * **Weekend spending:** flags heavy food-delivery spend and suggests topping up the Emergency Fund to protect the savings streak.
+  * **Subscription audit:** finds subscriptions unused for 60+ days and shows what cancelling them frees up each month.
+  * **Route my salary:** splits a new salary with the 50/30/20 rule and says how much to move into Pockets.
+* 🏦 **Home:** total balance, main account and Pockets, May spending by category, and searchable recent transactions.
+* 🐷 **Pockets:** savings goals with progress, earning 3.55% p.a., plus this month's interest.
+* 💸 **Transfer:** recent recipients, with checks on account format, available balance and the RM 5,000 daily limit.
+* 🎁 **Rewards:** claim vouchers with GXPoints, with soon-to-expire vouchers highlighted.
+* 🎨 **GXBank look:** a night-mode UI in the GXBank palette that works on desktop and phone.
+
+All account figures are sample data in `ai-agency/lib/data.ts`. Transfers and voucher claims are simulated in the browser; no real money moves.
 
 ## 🛠️ Tech Stack
 * **Framework:** Next.js 16 (App Router, React 19)
 * **Styling:** Tailwind CSS 4
-* **AI Integration:** Claude Haiku 5.5 via the Anthropic TypeScript SDK (`app/api/nudge/route.ts`)
+* **AI:** Claude Haiku 5.5 via the Anthropic TypeScript SDK
 * **Icons:** lucide-react
+* **Hosting:** Vercel
 
-All account figures are sample data in `ai-agency/lib/data.ts`. Transfers and voucher claims are simulated in the browser.
+## 🧭 How GX.AI works
+* `GET /api/nudge/[scenario]` (`weekend`, `audit` or `salary`) sends that check's facts to Claude and returns `{ text, source }`.
+* **Cost cap:** the facts for each check are fixed, so each answer is generated once and served to everyone from Vercel's cache for an hour. Claude is called at most three times an hour, whatever the traffic.
+* **Offline answers:** if Claude can't be reached (for example, no API key), the route returns a built-in answer and the app labels it "Offline answer".
+
+## 📁 Project Structure
+```
+ai-agency/
+├── app/
+│   ├── page.tsx                      # Home
+│   ├── pockets/  transfer/  rewards/ # Other screens
+│   ├── nav.tsx                       # Top bar (desktop) / tab bar (phone)
+│   ├── api/nudge/[scenario]/route.ts # GX.AI → Claude
+│   └── globals.css                   # GXBank colour tokens
+├── lib/data.ts                       # Sample account data and GX.AI facts
+└── vercel.json                       # Tells Vercel this is a Next.js app
+```
 
 ## 🚀 Getting Started (Local Development)
 
@@ -49,4 +74,9 @@ Then run the app at http://localhost:3000:
 npm run dev
 ```
 
-Without a key, GX.AI still answers, using built-in offline answers labelled "Offline answer".
+Without a key, GX.AI still works, using the offline answers.
+
+## ☁️ Deploying
+The repo is connected to Vercel: every push to `main` deploys to production, and every pull request gets a preview URL.
+* **Root directory:** `ai-agency`
+* **Environment variable:** `ANTHROPIC_API_KEY` for Production and Preview. After changing it, redeploy so the new value takes effect.
